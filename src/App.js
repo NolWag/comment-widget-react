@@ -31,20 +31,23 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App container">
         {
           this.state.comments.map((comment, i) => {
             console.log(comment)
-            return <Comment key={i} name={comment.name} comment={comment.comment} />
+            return(
+              <div className="card">
+              <Comment key={i} name={comment.name} comment={comment.comment} />
+            </div>
+            )
           })
         }
         <div>
           <form id="form" onSubmit={this.handleSubmit} >
+          <textarea className="commentInput" placeholder="Type here..." name="comment"/>
           <label>Name:</label>
           <input className="nameInput" name="name"/>
-          <label>Comment:</label>
-          <textarea className="commentInput" rows="8" cols="60" name="comment"/>
-          <button type="submit">Submit</button>
+          <button className="btn-primary" type="submit">Submit</button>
         </form>
         </div>
       </div>
